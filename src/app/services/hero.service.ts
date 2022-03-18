@@ -17,4 +17,12 @@ export class HeroService {
     this.messageService.add("HeroService: fetched heroes");
     return heroes;
   }
+
+  getHero(id: number): Observable<Hero> {
+    // assume that param id always corresponds to a hero.
+    // all input will have a hero. (so that we wont worry about error handling)
+    const hero = HEROES.find(h => h.id == id)!;
+    this.messageService.add(`HeroService: fetched hero id=${id}`);
+    return of(hero);
+  }
 }
